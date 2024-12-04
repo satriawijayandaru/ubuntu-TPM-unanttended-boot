@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Check if the OS version is Ubuntu 22.04
+OS_VERSION=$(lsb_release -rs)
+
+if [[ "$OS_VERSION" != "22.04" ]]; then
+    echo "This script is only compatible with Ubuntu 22.04. Aborting."
+    exit 1
+fi
+
+echo "Detected Ubuntu 22.04. Proceeding with the script."
+
 # Install required packages
 sudo apt update
 sudo apt install -y tpm2-tools tss2 dracut libcurl4 libjson-c5 libtss2-fapi1 libtss2-tcti-cmd0 libtss2-tcti-device0 libtss2-tcti-mssim0 libtss2-tcti-swtpm0
